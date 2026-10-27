@@ -9,8 +9,8 @@ Copy đúng bảy dòng bên dưới vào Word, điền các placeholder bằng 
 ```text
 Student Code: QE190100
 Full Name: Pham Ngo Bich Tram
-GitHub Repository URL: https://github.com/<username>/<repo-name>
-APK Download Link: https://github.com/<username>/<repo-name>/releases/download/v1.0/app-release.apk
+GitHub Repository URL: https://github.com/BchTram/bookshelf-prm393-QE190100
+APK Download Link: https://github.com/BchTram/bookshelf-prm393-QE190100/releases/download/v1.0/app-release.apk
 Firebase Project ID: bookshelf-prm393-7135b
 Test account email: grader.qe190100.bookshelf@example.com
 Test account password: <copy from local .private/grader_account.json>
@@ -22,7 +22,7 @@ Trong PowerShell tại bookshelf/ chạy `./scripts/package_submission.ps1 -Stud
 
 ## GitHub và APK public
 
-Chưa push/publish repository hoặc Release. Khi bạn đã đăng nhập GitHub CLI và chọn tên repository public:
+Repository public và Release v1.0 đã được tạo và xác minh bằng GitHub API. APK trên GitHub có SHA-256 `94cecc56e500ad0b82def22538c8b035d2af469530c52e19b8a8d04bf0b65029`, khớp APK local (52,289,723 bytes). Không chạy lại lệnh tạo repository đã tồn tại bên dưới; đây chỉ là tham khảo cho một repository mới.
 
 ```powershell
 git init
@@ -33,7 +33,7 @@ flutter build apk --release
 gh release create v1.0 build/app/outputs/flutter-apk/app-release.apk --title "BookShelf 1.0" --notes "Android APK for PRM393"
 ```
 
-Kiểm tra repository public và tải APK từ link bằng trình duyệt không đăng nhập. Source public phải giống source ZIP. Không commit tài khoản/password chấm. Chưa có URL hoặc upload nào được xác nhận trong workspace này.
+Source public phải giống source ZIP. Không commit tài khoản/password chấm. Script `scripts/publish_github.ps1` tạo repository từ source ZIP đã lọc, tải APK và lưu URL trong metadata riêng.
 
 ## Trước khi nộp
 

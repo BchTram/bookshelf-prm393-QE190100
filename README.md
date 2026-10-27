@@ -84,4 +84,8 @@ Firestore set vào ID đã tồn tại là update một hàng, không tạo sác
 
 ## Nộp bài
 
-Đọc docs/SUBMISSION_GUIDE.md và docs/SCREENSHOT_CHECKLIST.md. Sinh viên: QE190100, Pham Ngo Bich Tram. Credentials chấm chỉ lưu tại .private/grader_account.json, được loại khỏi Git/source ZIP; dùng để điền vào báo cáo riêng. Public GitHub/APK URLs và ảnh Firebase Console cần hoàn tất trước khi nộp.
+Đọc docs/SUBMISSION_GUIDE.md và docs/SCREENSHOT_CHECKLIST.md. Sinh viên: QE190100, Pham Ngo Bich Tram. Credentials chấm chỉ lưu tại .private/grader_account.json, được loại khỏi Git/source ZIP; dùng để điền vào báo cáo riêng. Ảnh Firebase Console và kiểm tra bố cục Word cần hoàn tất trước khi nộp.
+
+Source public: https://github.com/BchTram/bookshelf-prm393-QE190100
+
+APK release: https://github.com/BchTram/bookshelf-prm393-QE190100/releases/download/v1.0/app-release.apk

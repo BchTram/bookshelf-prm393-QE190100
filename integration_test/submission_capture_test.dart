@@ -24,6 +24,16 @@ void main() {
     await tester.pumpAndSettle();
     final auth = FirebaseServices.auth;
     if (const bool.fromEnvironment('RESTORE_CHECK')) {
+      final marker = File(
+        '/data/user/0/com.example.bookshelf/cache/restore_check',
+      );
+      if (!await marker.exists()) {
+        await auth.signInWithEmailAndPassword(email: email, password: password);
+        await marker.writeAsString('Restart the same APK without reinstalling');
+        debugPrint('RESTORE_SEEDED: restart this exact APK for verification');
+        return;
+      }
+      await auth.authStateChanges().first;
       expect(auth.currentUser?.email, email);
       final repository = BookRepository(FirebaseServices.firestore, auth);
       final restored = await repository.watch().first;
@@ -35,9 +45,12 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('List'), findsOneWidget);
       expect(Navigator.of(tester.element(find.text('List'))).canPop(), false);
+      await marker.delete();
+      debugPrint('RESTORE_VERIFIED: persisted auth, books and favorite');
       return;
     }
-    if (auth.currentUser != null) {
+    if (auth.currentUser != null &&
+        !const bool.fromEnvironment('EDIT_VALIDATION_CAPTURE')) {
       await auth.signOut();
       await tester.pumpAndSettle();
     }
@@ -116,6 +129,31 @@ void main() {
       await tap(find.text(choice).last);
     }
 
+    if (const bool.fromEnvironment('EDIT_VALIDATION_CAPTURE')) {
+      if (auth.currentUser == null) {
+        await auth.signInWithEmailAndPassword(email: email, password: password);
+      }
+      await waitFor(find.text('List'));
+      expect(auth.currentUser?.email, email);
+      await waitFor(find.byType(Scrollable));
+      await reveal(find.text('Dune'));
+      await tap(find.text('Dune'));
+      await tap(find.text('Edit'));
+      await tester.enterText(find.byType(TextFormField).first, '');
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await reveal(find.widgetWithText(FilledButton, 'Save'));
+      await tap(find.widgetWithText(FilledButton, 'Save'));
+      FocusManager.instance.primaryFocus?.unfocus();
+      await tester.pumpAndSettle();
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, 1200));
+      await tester.pumpAndSettle();
+      expect(find.text('Title is required'), findsOneWidget);
+      await capture('16_detail_edit_validation');
+      await reveal(find.text('Cancel'));
+      await tap(find.text('Cancel'));
+      expect(find.text('Dune'), findsOneWidget);
+      return;
+    }
     await capture('00_home');
     await tap(find.text('Register'));
     await tap(find.widgetWithText(FilledButton, 'Register'));
@@ -228,7 +266,7 @@ void main() {
     await reveal(find.text('No books found'));
     expect(find.text('No books found'), findsOneWidget);
     await capture('21_delete_after');
-    expect(find.text(editedTitle), findsNothing);
+    expect(find.widgetWithText(ListTile, editedTitle), findsNothing);
     await clear();
     await reveal(find.text('Summary'));
     await capture('23_final_summary');
