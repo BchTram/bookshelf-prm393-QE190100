@@ -19,7 +19,7 @@ try {
         $items = if (Test-Path -LiteralPath $entryPath -PathType Container) { Get-ChildItem -LiteralPath $entryPath -File -Recurse -Force } else { Get-Item -LiteralPath $entryPath }
         foreach ($item in $items) {
             $relativePath = $item.FullName.Substring($projectRoot.Length + 1).Replace('\','/')
-            if ($relativePath -match '(^|/)(build|\.dart_tool|\.git|\.gradle|\.cxx|node_modules)/|(^|/)(local.properties|key.properties)$|service.account|adminsdk|\.(jks|keystore|log)$') { continue }
+            if ($relativePath -match '(^|/)(build|\.dart_tool|\.git|\.gradle|\.cxx|node_modules)/|(^|/)(local.properties|key.properties|GeneratedPluginRegistrant.java)$|service.account|adminsdk|\.(jks|keystore|log|iml)$') { continue }
             [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, $item.FullName, $relativePath) | Out-Null
         }
     }
