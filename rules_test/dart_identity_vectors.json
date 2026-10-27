@@ -1,0 +1,62 @@
+[
+  {
+    "title": "A|B",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|a%7cb|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "A/B",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|a%2fb|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "%2f|100%",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|%252f%7c100%25|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "ĐƯỜNG VỀ 📚",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|đường về 📚|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "ÉCOLE",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|école|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "İSTANBUL",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|İstanbul|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "ΟΣ",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|οσ|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "ẞ",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|ß|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "Σ",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|σ|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "𐐀",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|𐐨|tác giả %2f %25 %7c author"
+  },
+  {
+    "title": " A ",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA| a |tác giả %2f %25 %7c author"
+  },
+  {
+    "title": "line\nbreak",
+    "author": "TÁC GIẢ / % | Author",
+    "id": "UserA|line\nbreak|tác giả %2f %25 %7c author"
+  }
+]

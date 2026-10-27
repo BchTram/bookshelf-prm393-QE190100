@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function escape(s) {
+      return s.replace('%', '%25').replace('\\\\', '%5c').replace('/', '%2f').replace('[|]', '%7c');
+    }
+    // BEGIN GENERATED CANONICAL GUARD
+    function canonical(s) { return s.matches("[^A-ZµÀ-ÖØ-ÞĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŸ-ŹŻŽſƁ-ƂƄƆ-ƇƉ-ƋƎ-ƑƓ-ƔƖ-ƘƜ-ƝƟ-ƠƢƤƦ-ƧƩƬƮ-ƯƱ-ƳƵƷ-ƸƼǄ-ǅǇ-ǈǊ-ǋǍǏǑǓǕǗǙǛǞǠǢǤǦǨǪǬǮǱ-ǲǴǶ-ǸǺǼǾȀȂȄȆȈȊȌȎȐȒȔȖȘȚȜȞȠȢȤȦȨȪȬȮȰȲȺ-ȻȽ-ȾɁɃ-ɆɈɊɌɎͅͰͲͶͿΆΈ-ΊΌΎ-ΏΑ-ΡΣ-ΫςϏ-ϑϕ-ϖϘϚϜϞϠϢϤϦϨϪϬϮϰ-ϱϴ-ϵϷϹ-ϺϽ-ЯѠѢѤѦѨѪѬѮѰѲѴѶѸѺѼѾҀҊҌҎҐҒҔҖҘҚҜҞҠҢҤҦҨҪҬҮҰҲҴҶҸҺҼҾӀ-ӁӃӅӇӉӋӍӐӒӔӖӘӚӜӞӠӢӤӦӨӪӬӮӰӲӴӶӸӺӼӾԀԂԄԆԈԊԌԎԐԒԔԖԘԚԜԞԠԢԤԦԨԪԬԮԱ-ՖႠ-ჅჇჍᏸ-ᏽᲀ-ᲉᲐ-ᲺᲽ-ᲿḀḂḄḆḈḊḌḎḐḒḔḖḘḚḜḞḠḢḤḦḨḪḬḮḰḲḴḶḸḺḼḾṀṂṄṆṈṊṌṎṐṒṔṖṘṚṜṞṠṢṤṦṨṪṬṮṰṲṴṶṸṺṼṾẀẂẄẆẈẊẌẎẐẒẔẛẞẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼẾỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴỶỸỺỼỾἈ-ἏἘ-ἝἨ-ἯἸ-ἿὈ-ὍὙὛὝὟὨ-Ὧᾈ-ᾏᾘ-ᾟᾨ-ᾯᾸ-ᾼιῈ-ῌῘ-ΊῨ-ῬῸ-ῼΩK-ÅℲⅠ-ⅯↃⒶ-ⓏⰀ-ⰯⱠⱢ-ⱤⱧⱩⱫⱭ-ⱰⱲⱵⱾ-ⲀⲂⲄⲆⲈⲊⲌⲎⲐⲒⲔⲖⲘⲚⲜⲞⲠⲢⲤⲦⲨⲪⲬⲮⲰⲲⲴⲶⲸⲺⲼⲾⳀⳂⳄⳆⳈⳊⳌⳎⳐⳒⳔⳖⳘⳚⳜⳞⳠⳢⳫⳭⳲꙀꙂꙄꙆꙈꙊꙌꙎꙐꙒꙔꙖꙘꙚꙜꙞꙠꙢꙤꙦꙨꙪꙬꚀꚂꚄꚆꚈꚊꚌꚎꚐꚒꚔꚖꚘꚚꜢꜤꜦꜨꜪꜬꜮꜲꜴꜶꜸꜺꜼꜾꝀꝂꝄꝆꝈꝊꝌꝎꝐꝒꝔꝖꝘꝚꝜꝞꝠꝢꝤꝦꝨꝪꝬꝮꝹꝻꝽ-ꝾꞀꞂꞄꞆꞋꞍꞐꞒꞖꞘꞚꞜꞞꞠꞢꞤꞦꞨꞪ-ꞮꞰ-ꞴꞶꞸꞺꞼꞾꟀꟂꟄ-ꟇꟉꟋ-ꟌꟐꟖꟘꟚꟜꟵꭰ-ꮿＡ-Ｚ𐐀-𐐧𐒰-𐓓𐕰-𐕺𐕼-𐖊𐖌-𐖒𐖔-𐖕𐲀-𐲲𐵐-𐵥𑢠-𑢿𖹀-𖹟𞤀-𞤡]*"); }
+    // END GENERATED CANONICAL GUARD
+    // BEGIN GENERATED RE2 COMPATIBILITY
+    function compatible(s) { return s.replace("ᲀ", "в").replace("ᲁ", "д").replace("ᲂ", "о").replace("ᲃ", "с").replace("ᲄ", "т").replace("ᲅ", "т").replace("ᲆ", "ъ").replace("ᲇ", "ѣ").replace("ᲈ", "ꙋ"); }
+    // END GENERATED RE2 COMPATIBILITY
+    function literalMatch(canonicalValue, original) {
+      // escape() removes backslashes; original cannot inject a quote terminator.
+      return canonicalValue.matches('(?i)\\Q' + escape(compatible(original)) + '\\E');
+    }
+    function identity(d, id) {
+      let parts = id.split('[|]');
+      return parts.size() == 3 && parts[0] == escape(d.userId)
+        && canonical(parts[1]) && canonical(parts[2])
+        && literalMatch(parts[1], d.title) && literalMatch(parts[2], d.author);
+    }
+    function valid(d, id) {
+      return d.keys().hasAll(['id','userId','title','author','genre','status','favorite','createdAt'])
+        && d.keys().hasOnly(['id','userId','title','author','genre','status','rating','favorite','notes','createdAt'])
+        && d.id is string && d.id == id
+        && d.userId is string && d.userId == request.auth.uid
+        && d.title is string && d.title.trim().size() > 0 && d.title.size() <= 100
+        && d.author is string && d.author.trim().size() > 0 && d.author.size() <= 60
+        && d.genre in ['Fiction','Non-Fiction','Academic','Other']
+        && d.status in ['To Read','Reading','Finished']
+        && (d.get('rating', null) == null || (d.rating is int && d.rating >= 0 && d.rating <= 5))
+        && d.get('notes', '') is string && d.get('notes', '').size() <= 300
+        && d.favorite is bool && d.createdAt is timestamp
+        && identity(d, id);
+    }
+    match /books/{bookId} {
+      // Transactions must be allowed to check a missing identity in their own namespace.
+      allow get: if signedIn() && ((resource == null && bookId.split('[|]')[0] == escape(request.auth.uid))
+        || resource.data.userId == request.auth.uid);
+      allow list: if signedIn() && resource.data.userId == request.auth.uid;
+      allow create: if signedIn() && valid(request.resource.data, bookId);
+      allow update: if signedIn() && resource.data.userId == request.auth.uid
+        && valid(request.resource.data, bookId)
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.id == resource.data.id
+        && request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if signedIn() && resource.data.userId == request.auth.uid;
+    }
+  }
+}
